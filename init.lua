@@ -61,10 +61,7 @@ end
 function cc_attack_check()
     if config_cc_check == "on" then
         local ATTACK_URI=ngx.var.uri
-        if ATTACK_URI == nil then
-            local CC_TOKEN = get_client_ip()..ATTACK_URI
-        else local CC_TOKEN = get_client_ip()
-        end
+        local CC_TOKEN = get_client_ip()..ATTACK_URI
         local limit = ngx.shared.limit
         local CCcount=tonumber(string.match(config_cc_rate,'(.*)/'))
         local CCseconds=tonumber(string.match(config_cc_rate,'/(.*)'))
